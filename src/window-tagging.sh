@@ -27,12 +27,24 @@ wt_tag_file() {
   echo "$(wt_tag_dir)/window_id_$1"
 }
 
+wt_debug_log_file() {
+  echo "$(wt_data_dir)/debug.log"
+}
+
+wt_debug() {
+  local msg="$1"
+  mkdir -p "$(wt_data_dir)"
+  printf '%s %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$msg" >> "$(wt_debug_log_file)"
+}
+
 wt_notify() {
   if [[ "${WINDOW_TAGGING_NOTIFICATIONS:-1}" != "1" ]]; then
     return 0
   fi
   if command -v osascript >/dev/null 2>&1; then
-    osascript -e "display notification \"$1\" with title \"window tagging\""
+    local message="${1//$'\n'/ }"
+    message="${message//\"/\'}"
+    osascript -e "display notification \"$message\" with title \"window tagging\""
   fi
 }
 
@@ -48,6 +60,7 @@ wt_require_backend() {
 
   # shellcheck disable=SC1090
   source "$WINDOW_TAGGING_BACKEND"
+  wt_debug "loaded backend path=$WINDOW_TAGGING_BACKEND name=${WT_BACKEND_NAME:-unset}"
 
   : "${WT_BACKEND_NAME:?WT_BACKEND_NAME must be set in backend}"
   command -v wt_get_focused_window_id >/dev/null 2>&1 || { echo "backend missing wt_get_focused_window_id" >&2; return 1; }
