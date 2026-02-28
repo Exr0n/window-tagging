@@ -1,0 +1,108 @@
+# window-tagging default binds
+
+[window_tagging]
+# keys used for tagging + jumping
+keys = ["1", "2", "3", "4", "5", "6", "7", "q", "w", "e", "r"]
+
+[app_tagging]
+# application launcher bindings
+# fields: key, mods, action, app, label
+# actions: open, open_if_running
+
+[[app_tagging.bind]]
+key = "o"
+mods = "lalt"
+action = "open"
+app = "ChatGPT"
+label = "ChatGPT"
+
+[[app_tagging.bind]]
+key = "a"
+mods = "lalt"
+action = "open"
+app = "Arc"
+label = "Arc"
+
+[[app_tagging.bind]]
+key = "e"
+mods = "lalt"
+action = "open"
+app = "Kitty"
+label = "Kitty"
+
+[[app_tagging.bind]]
+key = "0x06"
+mods = "lalt"
+action = "open"
+app = "Google Chrome"
+label = "Chrome"
+
+[[app_tagging.bind]]
+key = "q"
+mods = "lalt"
+action = "open"
+app = "Obsidian"
+label = "Obsidian"
+
+[[app_tagging.bind]]
+key = "q"
+mods = "lalt+shift"
+action = "open"
+app = "Notes"
+label = "Notes"
+
+[[app_tagging.bind]]
+key = "8"
+mods = "lalt"
+action = "open_if_running"
+app = "Mail"
+label = "Mail"
+
+[[app_tagging.bind]]
+key = "8"
+mods = "lalt+shift"
+action = "open_if_running"
+app = "Telegram"
+label = "Telegram"
+
+[[app_tagging.bind]]
+key = "8"
+mods = "lalt+ctrl"
+action = "open"
+app = "Mochi"
+label = "Mochi"
+
+[[app_tagging.bind]]
+key = "9"
+mods = "lalt"
+action = "open_if_running"
+app = "Discord"
+label = "Discord"
+
+[[app_tagging.bind]]
+key = "9"
+mods = "lalt+shift"
+action = "open_if_running"
+app = "Messages"
+label = "Messages"
+
+[[app_tagging.bind]]
+key = "0"
+mods = "lalt"
+action = "open"
+app = "Fantastical"
+label = "Fantastical"
+
+[[app_tagging.bind]]
+key = "0"
+mods = "lalt+shift"
+action = "open"
+app = "Toggl Track"
+label = "Toggl"
+
+[[app_tagging.bind]]
+key = "0"
+mods = "lalt+ctrl"
+action = "open"
+app = "cao"
+label = "cao"
