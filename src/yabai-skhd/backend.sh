@@ -18,3 +18,15 @@ wt_list_window_ids() {
 wt_focus_workspace() {
   yabai -m space --focus "$1"
 }
+
+wt_list_windows_with_app() {
+  yabai -m query --windows | jq -r '.[] | "\(.id)\t\(.app)\t\(.["is-minimized"] // .minimized // 0)"'
+}
+
+wt_minimize_window() {
+  yabai -m window --minimize "$1"
+}
+
+wt_deminimize_window() {
+  yabai -m window --deminimize "$1"
+}

@@ -55,3 +55,7 @@ wt_require_backend() {
   command -v wt_list_window_ids >/dev/null 2>&1 || { echo "backend missing wt_list_window_ids" >&2; return 1; }
   command -v wt_focus_workspace >/dev/null 2>&1 || { echo "backend missing wt_focus_workspace" >&2; return 1; }
 }
+
+wt_has_fn() {
+  command -v "$1" >/dev/null 2>&1
+}

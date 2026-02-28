@@ -22,9 +22,11 @@ Tag a focused window with a key, then jump to that window from anywhere. If the 
 - `src/yabai-skhd/backend.sh` Yabai backend (requires `yabai` + `jq`).
 - `src/yabai-skhd/install-yabai.sh` Installer for skhd bindings.
 - `src/yabai-skhd/install-app-binds.sh` Installer for app launcher bindings in skhd.
+- `src/switch-session.sh` Session switcher (works with both; minimize/restore is yabai-only).
 - `src/aerospace/backend.sh` AeroSpace backend.
 - `src/aerospace/install-aerospace.sh` Installer for AeroSpace bindings.
 - `src/aerospace/install-app-binds.sh` Installer for app launcher bindings in AeroSpace.
+- `src/raycast/switch-session-picker.sh` Raycast picker for sessions.
 - `config/window-tagging-binds.toml` Default bind config.
 
 ## Install
@@ -142,6 +144,29 @@ The installers read a single config file for window-tagging keys and app launche
 If the file doesn’t exist, installers copy `config/window-tagging-binds.toml` into place. Edit it to add/remove keys or app bindings.
 
 This file is intentionally small and hand-editable. You can also use the installers’ prompts to select a subset.
+
+## Sessions (yabai)
+
+There’s a session switcher and a Raycast picker script. With yabai, it minimizes/restores other windows. With AeroSpace, it simulates minimize by moving non-session windows to a hidden workspace and restoring session windows to their previous workspaces.
+
+Raycast install:
+
+```bash
+cp ~/.config/window-tagging/src/raycast/switch-session-picker.sh ~/.config/raycast-script-commands/
+```
+
+Session switcher script:
+
+```bash
+~/.config/window-tagging/src/switch-session.sh <session-name>
+```
+
+Session env vars:
+
+- `WINDOW_TAGGING_DATA_DIR` (default `~/.caches/window-tagging`)
+- `WINDOW_TAGGING_SESSION_FILE` (default `~/.caches/window-tagging/session_name`)
+- `WINDOW_TAGGING_EXCLUDED_APPS_REGEX` (regex for apps never minimized)
+- `WINDOW_TAGGING_HIDDEN_WORKSPACE` (AeroSpace: workspace name for “minimized” windows, default `__wt_hidden`)
 
 ## Notes
 

@@ -18,3 +18,15 @@ wt_list_window_ids() {
 wt_focus_workspace() {
   aerospace workspace "$1"
 }
+
+wt_list_windows_with_app_and_workspace() {
+  aerospace list-windows --all --format '%{window-id}%{tab}%{app-name}%{tab}%{workspace}'
+}
+
+wt_move_window_to_workspace() {
+  aerospace move-node-to-workspace --window-id "$1" "$2"
+}
+
+wt_get_focused_workspace() {
+  aerospace list-workspaces --focused --format '%{workspace}'
+}
